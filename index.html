@@ -1,469 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAN Token - Nashop: Next-Level Crypto Rewards</title>
+    <title>nashop.shop - Under Development</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
     <style>
-        /* CSS Reset */
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Root Variables - Stay Rad! */
-
-        :root {
-            --bg-color: #1a1a2e;
-            /* Deep space */
-            --text-color: #f0edee;
-            /* Moon glow */
-            --accent-color: #e94560;
-            /* Neon sunset */
-            --secondary-color: #162447;
-            /* Dark abyss */
-            --tertiary-color: #92a8d1;
-            /* Ethereal blue */
-            --header-font: 'Bebas Neue', sans-serif;
-            --body-font: 'Montserrat', sans-serif;
-        }
-
-        /* Global Styles - Level Up! */
-
         body {
-            font-family: var(--body-font);
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.8;
-            overflow-x: hidden;
-            /* No nasty surprises! */
+            background: radial-gradient(circle at top left, #1a1a2e 0%, #16213e 50%, #0f172a 100%);
         }
 
-        a {
-            color: var(--accent-color);
-            text-decoration: none;
-            transition: color 0.3s ease, transform 0.2s ease;
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        a:hover {
-            color: #fff;
-            transform: scale(1.05);
+        .gradient-text {
+            background: linear-gradient(45deg, #60a5fa, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientFlow 6s ease infinite;
+            background-size: 200% 200%;
         }
 
-        .container {
-            width: 85%;
-            margin: 0 auto;
-            padding: 40px;
+        .development-banner {
+            background: linear-gradient(-45deg, #ff6b6b, #6b47ff, #47c1ff, #47ff9e);
+            background-size: 400% 400%;
+            animation: gradientMove 10s ease infinite;
         }
 
-        /* Header - Blast Off! */
-
-        header {
-            text-align: center;
-            padding: 60px 0;
-            background: linear-gradient(to right, var(--secondary-color), var(--tertiary-color));
-            color: #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        header h1 {
-            font-family: var(--header-font);
-            font-size: 4em;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Sections - Reveal the Magic! */
-
-        section {
-            padding: 90px 0;
+        .feature-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            opacity: 0;
-            transform: translateY(80px);
-            transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+            overflow: hidden;
         }
 
-        section.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Section Titles - Boom! */
-
-        h2 {
-            font-family: var(--header-font);
-            font-size: 4.5em;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-            text-align: center;
-            color: var(--accent-color);
-            /* Color the title */
-            position: relative;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 4px;
-            background-color: #fff;
-            /* White line below */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-        }
-
-        h3 {
-            font-family: var(--body-font);
-            font-size: 2.4em;
-            margin-bottom: 25px;
-            text-align: left;
-            color: var(--tertiary-color);
-        }
-
-        p {
-            font-size: 1.1em;
-            text-align: justify;
-            margin-bottom: 20px;
-            color: #ddd;
-            /* Slightly lighter text */
-        }
-
-        ul,
-        ol {
-            margin-bottom: 20px;
-            padding-left: 30px;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        /* Image Sections - Glow Up! */
-
-        .image-section {
-            position: relative;
-            color: var(--text-color);
-            /* To make the text visible */
-        }
-
-        .image-section::before {
+        .feature-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            /* Enhanced transparency */
-            z-index: 1;
-            /* Below the content */
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #60a5fa, transparent);
+            transform: translateX(-100%);
+            transition: transform 0.7s;
         }
 
-        .image-section .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .feature-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .glow-effect {
             position: relative;
-            z-index: 2;
         }
 
-        .image-section .content {
-            width: 55%;
+        .glow-effect::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #60a5fa, #c084fc);
+            z-index: -1;
+            filter: blur(15px);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
-        .image-section .image {
-            width: 40%;
-            text-align: center;
+        .glow-effect:hover::after {
+            opacity: 0.3;
         }
 
-        .image-section .image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .floating {
+            animation: floating 3s ease-in-out infinite;
         }
 
-        .image-section .image img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
 
-        /* Custom Backgrounds */
-
-        #hero {
-            background: url('https://i.imgur.com/XhQ3f8Z.png') center/cover no-repeat;
+        @keyframes gradientMove {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
         }
 
-        #benefit {
-            background: url('https://i.imgur.com/jO37c0x.png') center/cover no-repeat;
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
         }
 
-        #challenges {
-            background: url('https://i.imgur.com/e68X17N.png') center/cover no-repeat;
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
         }
 
-        #leading {
-            background: url('https://i.imgur.com/P3P3tD8.png') center/cover no-repeat;
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
         }
 
-        #real-world {
-            background: url('https://i.imgur.com/4H6R85p.png') center/cover no-repeat;
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
         }
 
-        #investment {
-            background: url('https://i.imgur.com/Wv5v51D.png') center/cover no-repeat;
-        }
-
-        /* Thank You Section - Shine On! */
-
-        .thank-you {
-            background-color: var(--secondary-color);
-            color: #fff;
-            text-align: center;
-            padding: 120px 0;
-            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .thank-you .content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .thank-you h2 {
-            font-size: 5em;
-            margin-bottom: 40px;
-        }
-
-        .thank-you a {
-            display: inline-block;
-            margin-top: 40px;
-            padding: 20px 40px;
-            background-color: var(--accent-color);
-            color: #fff;
-            border-radius: 8px;
+        .social-icon {
             transition: all 0.3s ease;
-            font-weight: bold;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
-        .thank-you a:hover {
-            background-color: #fff;
-            color: var(--bg-color);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+        .social-icon:hover {
+            transform: rotate(360deg) scale(1.2);
         }
 
-        /* Responsive Design - Adapt and Conquer! */
-
-        @media (max-width: 768px) {
-            :root {
-                --container-width: 95%;
-            }
-
-            header h1 {
-                font-size: 3em;
-            }
-
-            h2 {
-                font-size: 3.5em;
-            }
-
-            h3 {
-                font-size: 2em;
-            }
-
-            p {
-                font-size: 1em;
-            }
-
-            .image-section .container {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .image-section .content,
-            .image-section .image {
-                width: 100%;
-                margin-bottom: 40px;
-            }
-
-            .thank-you h2 {
-                font-size: 3.5em;
-            }
+        input:focus {
+            box-shadow: 0 0 15px rgba(96, 165, 250, 0.5);
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous"
-        referrerpolicy="no-referrer"
-    />
 </head>
+<body class="min-h-screen text-white font-sans">
+    <!-- Development Banner -->
+    <div class="development-banner text-white text-center py-3 px-4 font-bold text-lg">
+        🚧 Website Under Development - Coming Soon! 🚧
+    </div>
 
-<body>
+    <!-- Hero Section -->
+    <div class="container mx-auto px-6 py-16">
+        <div class="flex flex-col items-center justify-center min-h-screen text-center">
+            <div class="space-y-12">
+                <div class="flex items-center justify-center space-x-4 floating">
+                    <i data-lucide="shopping-bag" class="w-16 h-16 text-blue-400"></i>
+                    <h1 class="text-7xl font-bold gradient-text">
+                        nashop.shop
+                    </h1>
+                </div>
+                <p class="text-3xl text-blue-300 opacity-90">Dinakart (DAN) Token Launch - Under Development</p>
 
-    <header>
-        <div class="container">
-            <h1>Nashop DAN Token: Crypto Rewards Reimagined</h1>
+                <!-- **ADD BUTTON HERE** -->
+                <a href="YOUR_TOKEN_PAGE_LINK_HERE" class="btn-shine inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-8">
+                  Token Page
+                </a>
+
+                <!-- New Features Section -->
+                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 my-16">
+                    <div class="feature-card glass-effect p-8 rounded-2xl glow-effect">
+                        <i data-lucide="rocket" class="w-16 h-16 text-blue-400 mx-auto mb-6 floating"></i>
+                        <h3 class="text-2xl font-bold text-blue-400 mb-4">Innovative Shopping Experience</h3>
+                        <p class="text-gray-300 text-lg">Experience a revolutionary e-commerce platform powered by blockchain technology.</p>
+                    </div>
+                    <div class="feature-card glass-effect p-8 rounded-2xl glow-effect">
+                        <i data-lucide="shield" class="w-16 h-16 text-purple-400 mx-auto mb-6 floating"></i>
+                        <h3 class="text-2xl font-bold text-purple-400 mb-4">Secure Transactions</h3>
+                        <p class="text-gray-300 text-lg">Advanced security measures ensuring safe and transparent shopping.</p>
+                    </div>
+                </div>
+
+                <!-- Main Features -->
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="feature-card glass-effect p-8 rounded-2xl glow-effect">
+                        <i data-lucide="shopping-bag" class="w-12 h-12 text-blue-400 mx-auto mb-6"></i>
+                        <h3 class="text-xl font-bold text-blue-400 mb-3">Reward Redemptions</h3>
+                        <p class="text-gray-300">Use DAN tokens to claim exciting rewards and special offers</p>
+                    </div>
+                    
+                    <div class="feature-card glass-effect p-8 rounded-2xl glow-effect">
+                        <i data-lucide="coins" class="w-12 h-12 text-purple-400 mx-auto mb-6"></i>
+                        <h3 class="text-xl font-bold text-purple-400 mb-3">Exclusive Discounts</h3>
+                        <p class="text-gray-300">Enjoy special discounts on future purchases</p>
+                    </div>
+                    
+                    <div class="feature-card glass-effect p-8 rounded-2xl glow-effect">
+                        <i data-lucide="trending-up" class="w-12 h-12 text-blue-400 mx-auto mb-6"></i>
+                        <h3 class="text-xl font-bold text-blue-400 mb-3">Tradeable Asset</h3>
+                        <p class="text-gray-300">Trade DAN tokens on various exchanges</p>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="max-w-2xl mx-auto w-full mt-16">
+                    <div class="glass-effect p-8 rounded-xl text-center">
+                        <h3 class="text-2xl font-bold text-blue-400 mb-4">Get in Touch</h3>
+                        <p class="text-xl text-gray-300">
+                            For more information about our platform and services, please contact us at:
+                        </p>
+                        <a href="mailto:contact@nashop.shop" class="text-2xl text-blue-400 font-bold mt-4 inline-block hover:text-blue-300 transition-colors">
+                            contact@nashop.shop
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </header>
+    </div>
 
-    <main>
-
-        <section id="hero" class="hero image-section">
-            <div class="container">
-                <div class="content">
-                    <h2>Unleash the DAN Token</h2>
-                    <h3>Imagine the Future of Shopping</h3>
-                    <p>Dinakart (DAN) Crypto Coin is revolutionizing loyalty, exclusive for nashop.shop enthusiasts. Every purchase unlocks DAN tokens, opening a universe of exclusive perks:</p>
-                    <ul>
-                        <li>> <strong>Reward Redemptions:</strong> Trade DAN tokens for killer rewards and exclusive deals, directly on our site.</li>
-                        <li>> <strong>Exclusive Discounts:</strong> Score bonus savings on future buys, making shopping more rewarding.</li>
-                        <li>> <strong>Tradeable Asset:</strong> Beyond shopping, DAN tokens are hitting exchanges, offering a chance to trade and potentially grow your investment.</li>
-                        <li>> <strong>Next-Level Loyalty:</strong> With Dinakart (DAN), every buy fuels your journey to exclusive rewards and dynamic crypto trading. Shop smarter, invest wiser - it pays to be loyal.</li>
-                    </ul>
-                </div>
-                <div class="image">
-                    <img src="https://i.imgur.com/L7Uq3sZ.png" alt="DAN Token Stack">
+    <!-- Footer -->
+    <footer class="glass-effect py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center space-y-8">
+                <p class="text-gray-300 text-center max-w-2xl text-lg">
+                    With Dinakart (DAN) Crypto Coin, every purchase brings you closer to exclusive rewards and a dynamic crypto trading experience.
+                </p>
+                <div class="flex space-x-8">
+                    <a href="#" class="social-icon text-gray-400 hover:text-blue-400 transition-all">
+                        <i data-lucide="twitter" class="w-8 h-8"></i>
+                    </a>
+                    <a href="#" class="social-icon text-gray-400 hover:text-blue-400 transition-all">
+                        <i data-lucide="message-circle" class="w-8 h-8"></i>
+                    </a>
+                    <a href="#" class="social-icon text-gray-400 hover:text-blue-400 transition-all">
+                        <i data-lucide="github" class="w-8 h-8"></i>
+                    </a>
                 </div>
             </div>
-        </section>
-
-        <section id="benefit" class="benefit image-section">
-            <div class="container">
-                <div class="content">
-                    <h2>The DAN Advantage: It Pays To Be Loyal</h2>
-                    <h3>Why You Need DAN Tokens in Your Life</h3>
-                    <p>Dinakart (DAN) Crypto Coin isn't just a token – it transforms every nashop.shop experience into a rewarding adventure. Earn DAN tokens with every purchase, building a loyalty stash and unlocking epic benefits.</p>
-                    <p>Beyond standard rewards, DAN tokens bring real value: unlock instant discounts and access killer reward redemptions. Use your DAN stash for limited-time offers and exclusive pricing, bridging the gap between digital finance and your daily grind.</p>
-                    <p>Plus, DAN tokens are tradeable, offering a unique blend of utility and investment potential. Get in on the action on top crypto exchanges and watch your loyalty grow over time. Get in on the action and watch your stash grow.</p>
-                </div>
-                <div class="image">
-                    <img src="https://i.imgur.com/5w4k2Jk.png" alt="Profit with DAN">
-                </div>
-            </div>
-        </section>
-
-        <section id="challenges" class="challenges image-section">
-            <div class="container">
-                <div class="content">
-                    <h2>Keepin' It Real: Challenges and Risks</h2>
-                    <h3>Know the Game Before You Play</h3>
-                    <p>Dinakart (DAN) brings incredible value, but it's smart to understand the risks before diving in:</p>
-                    <ol>
-                        <li><strong>Market Swings:</strong> Like any crypto, DAN tokens can be volatile. The token's value may move up or down based on what's happening on the market.</li>
-                        <li><strong>Regulations Evolving:</strong> Cryptocurrency rules are always changing worldwide. Regulations could impact how you can use, trade, or hold DAN tokens in the future.</li>
-                        <li><strong>Tech & Security:</strong> As a digital asset, DAN security depends on secure blockchain tech. Always be cautious about potential tech bugs, wallet management and security to safeguard your stash.</li>
-                        <li><strong>Adoption is Key:</strong> DAN's magic relies on nashop.shop users and crypto traders digging it. Limited adoption or low liquidity could affect token functionality and value.</li>
-                        <li><strong>Ecosystem Ties:</strong> DAN tokens are directly linked to the nashop.shop platform. Any platform issues could impact DAN's worth.</li>
-                    </ol>
-                </div>
-                <div class="image">
-                    <img src="https://i.imgur.com/c0N1qG7.png" alt="Risk Awareness">
-                </div>
-            </div>
-        </section>
-
-        <section id="leading" class="leading image-section">
-            <div class="container">
-                <div class="content">
-                    <h2>Level Up Your Life with DAN Tokens</h2>
-                    <h3>A Next-Gen Leader in Loyalty</h3>
-                    <p>>Dinakart (DAN) is carving out a leadership position by uniquely blending the world of retail loyalty with the dynamic landscape of cryptocurrencies. By rewarding shoppers with tokens every time they purchase at nashop.shop, DAN offers a tangible incentive that
-                        goes beyond traditional rewards programs. This innovative model not only promotes repeat business but also builds a loyal community that is actively engaged with both the shopping experience and the broader crypto market.</p>
-                    <p>>Another key factor in DAN's market leadership is its dual utility. Customers can immediately benefit from exclusive discounts and rewards, and at the same time, they have the opportunity to trade DAN tokens on various cryptocurrency exchanges. This dual
-                        functionality sets DAN apart from many other tokens that typically serve only one purpose. It positions the coin as both a practical tool for everyday savings and a potential investment asset, catering to a wider audience and ensuring ongoing demand in different
-                        market segments.</p>
-                    <p>>Finally, strategic innovation and continuous ecosystem development are crucial to maintaining DAN's lead. By constantly evolving the token's features - such as expanding its range of rewards, enhancing security measures, and forging partnerships with
-                        additional platforms - Dinakart ensures that DAN remains relevant and competitive. This proactive approach to adapting to market trends and regulatory changes not only reinforces DAN's current market position but also sets the stage for future growth
-                        and sustainability in an ever-changing digital finance landscape.</p>
-                </div>
-                <div class="image">
-                    <img src="https://i.imgur.com/sH2P4zC.png" alt="Level Up Your Life with DAN">
-                </div>
-            </div>
-        </section>
-
-        <section id="real-world" class="real-world image-section">
-            <div class="container">
-                <div class="content">
-                    <h2>DAN in Action: Unleashing Real-World Value</h2>
-                    <h3>Your Token, Your Power</h3>
-                    <p>DAN tokens seamlessly integrate digital currency benefits into everyday shopping, making them a practical tool for real-world use. Here's how they empower you:</p>
-                    <ol>
-                        <li><strong>Loyalty Reimagined:</strong> Every time you buy at nashop.shop, you snag DAN tokens, turning every purchase into valuable points. Redeem tokens for killer deals, exclusives, and more – elevating your everyday routine.</li>
-                        <li><strong>Dual-Purpose Domination:</strong> DAN isn't just for savings – it’s a tradable digital asset. Watch it appreciate or trade on exchanges for financial upside, all while stacking rewards.</li>
-                        <li><strong>Revolutionizing Rewards:</strong> DAN tokens are modernizing retail, leveraging blockchain tech to enhance your rewards, ensuring secure, transparent transactions. Embrace the Future today.</li>
-                    </ol>
-                </div>
-                <div class="image">
-                    <img src="https://i.imgur.com/g18tY0R.png" alt="DAN - Level Up Today">
-                </div>
-            </div>
-        </section>
-
-        <section id="investment" class="investment image-section">
-            <div class="container">
-                <div class="content">
-                    <h2>DAN: Your Ticket to the Future</h2>
-                    <h3>Invesment and Trading</h3>
-                    <p>Unlock a world of opportunities with Dinakart (DAN) tokens. Designed for both retail and crypto enthusiasts, DAN offers a dynamic path to success.</p>
-                    <p>DAN as an Investment Asset Dinakart (DAN) tokens offer a unique opportunity for investors looking to participate in both the retail and crypto markets. Since DAN is earned through shopping at nashop.shop, its value is directly tied to the growth of the platform
-                        and user engagement. As the ecosystem expands and more users adopt DAN, demand for the token may increase, potentially driving up its value. Early adopters who accumulate and hold DAN tokens may benefit from long-term price appreciation as the token gains
-                        wider adoption and utility.</p>
-                    <p>Trading DAN on Crypto Exchanges DAN is going to be tradable digital asset and available on various cryptocurrency exchanges. Users can buy, sell, or trade DAN tokens based on market trends and demand. Traders can leverage market fluctuations to make profits,
-                        just like with other cryptocurrencies. Whether you're a short-term trader looking to capitalize on price swings or a long-term investor holding for future value growth, DAN provides flexibility in how you engage with the crypto market.</p>
-                    <p>Staking and Future Utility In addition to trading, future implementations of DAN could include staking mechanisms, where users lock their tokens to earn passive income. This would encourage long-term holding, reduce supply in circulation, and strengthen
-                        the token's ecosystem. Furthermore, potential partnerships with other platforms could increase DAN's real-world usability, making it a more attractive asset for both investors and traders.</p>
-                    <p>DAN is more than just a loyalty token — it has real potential in the world of crypto investment and trading. With its dual utility as both a shopping reward and a tradeable digital asset, it provides unique opportunities for users to maximize their earnings, whether
-                        through holding, trading, or leveraging future developments in the ecosystem.</p>
-                </div>
-                <div class="image">
-                    <img src="https://i.imgur.com/4e9rV13.png" alt="Trade DAN - Make Moves">
-                </div>
-            </div>
-        </section>
-
-        <section id="thank-you" class="thank-you">
-            <div class="container">
-                <div class="content">
-                    <h2>Let's Build the Future of Rewards Together</h2>
-                    <p>We're amped about your interest in Dinakart (DAN) and our journey to redefine loyalty. Thanks for joining the movement!</p>
-                    <p>Your enthusiasm shapes DAN's future, making it more powerful than ever. Let's redefine loyalty and revolutionize shopping together.</p>
-                    <a href="https://nashop.shop">Check out nashop.shop to Dive In</a>
-                </div>
-            </div>
-        </section>
-
-    </main>
+        </div>
+    </footer>
 
     <script>
-        const sections = document.querySelectorAll('section');
+        // Initialize Lucide icons
+        lucide.createIcons();
 
-        function checkSections() {
-            sections.forEach(section => {
-                const triggerBottom = window.innerHeight / 5 * 4; // Adjusted trigger point
-                const sectionTop = section.getBoundingClientRect().top;
+        // Add hover effect to email link
+        const emailLink = document.querySelector('a[href^="mailto:"]');
+        emailLink.addEventListener('mouseover', function() {
+            this.style.transform = 'scale(1.05)';
+        });
+        emailLink.addEventListener('mouseout', function() {
+            this.style.transform = 'scale(1)';
+        });
 
-                if (sectionTop < triggerBottom) {
-                    section.classList.add('active');
-                } else {
-                    section.classList.remove('active');
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }
+        }, {
+            threshold: 0.1
+        });
 
-        window.addEventListener('scroll', checkSections);
-        checkSections(); // Initial Check
+        // Initialize cards with opacity 0 and observe them
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            observer.observe(card);
+        });
     </script>
 </body>
-
 </html>
