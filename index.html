@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DAN Token Idea</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NASHOP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* CSS Reset */
-
     *,
     *::before,
     *::after {
@@ -16,88 +16,91 @@
       padding: 0;
     }
 
-    /* Root Variables (customize these!) */
-
     :root {
-      --bg-color: #000;
-      /* Black Background */
-      --text-color: #fff;
-      /* White Text */
-      --primary-color: #4CAF50;
-      /* Green Accent */
-      --secondary-color: #2196F3;
-      /* Blue Accent */
-      --container-width: 80%;
-      /* Adjust for desired width */
-      --font-family: sans-serif;
-      /* Choose your font */
+      --bg-color: #121212;
+      --text-color: #FFFFFF;
+      --primary-color: #39FF14;
+      --secondary-color: #BB86FC;
+      --font-family: 'Inter', sans-serif;
     }
-
-    /* General Styles */
 
     body {
       font-family: var(--font-family);
       background-color: var(--bg-color);
       color: var(--text-color);
       line-height: 1.6;
+      font-size: 16px;
     }
 
     .container {
-      width: var(--container-width);
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 40px;
     }
 
     header {
       padding: 20px 0;
-      text-align: left;
-      /* Move to the left */
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     header h1 {
-      font-size: 2em;
-      /* Smaller font size */
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
     }
 
     section {
-      padding: 50px 0;
+      padding: 80px 0;
+      position: relative;
     }
 
     h2 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-      text-align: left;
-      /* Move to the left */
+      font-size: 2.75rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
     }
 
     h3 {
-      font-size: 1.8em;
-      margin-bottom: 15px;
-      text-align: left;
-      /* Move to the left */
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 16px;
     }
 
     p {
-      margin-bottom: 15px;
-      text-align: left;
-      /* Move to the left */
+      margin-bottom: 24px;
+      color: rgba(255, 255, 255, 0.7);
     }
 
     ul,
     ol {
-      margin-bottom: 15px;
-      padding-left: 20px;
-      /* Add some indent */
+      margin-bottom: 24px;
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 8px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--primary-color);
     }
 
     /* Hero Section */
-
     .hero {
-      background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)), url('https://i.ibb.co/XfNBbjpH/image.png');
-      /* Replace with your image */
+      padding: 120px 0;
+      background: linear-gradient(to right, rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)),
+        url('https://i.ibb.co/d010x6LX/image.png');
       background-size: cover;
       background-position: center;
-      padding: 100px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .hero .container {
@@ -107,187 +110,147 @@
     }
 
     .hero-content {
-      width: 50%;
+      width: 55%;
     }
 
     .hero-image {
       width: 40%;
-      /* Adjust as needed */
     }
 
     .hero-image img {
       width: 100%;
       height: auto;
-      display: block;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
 
-    /* Benefit Section */
-
-    .benefit {
-      background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)), url('https://i.ibb.co/XfNBbjpH/image.png');
-      /* Replace with your image */
-      background-size: cover;
-      background-position: center;
-      padding: 100px 0;
+    .email-subscription {
+      background-color: #1E1E1E;
+      padding: 60px 0;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .benefit .container {
+    .email-subscription h2 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .email-subscription p {
+      font-size: 1.125rem;
+      margin-bottom: 32px;
+    }
+
+    .email-form {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
-    .benefit-content {
-      width: 50%;
+    .email-input {
+      width: 70%;
+      padding: 16px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background-color: #2D2D2D;
+      color: var(--text-color);
+      transition: border-color 0.2s ease;
     }
 
-    .benefit-image {
-      width: 40%;
-      /* Adjust as needed */
+    .email-input:focus {
+      border-color: var(--secondary-color);
+      outline: none;
     }
 
-    .benefit-image img {
-      width: 100%;
-      height: auto;
-      display: block;
+    .subscribe-btn {
+      padding: 16px 32px;
+      font-size: 1rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background-color: var(--secondary-color);
+      color: var(--bg-color);
+      transition: background-color 0.2s ease;
     }
 
-    /* Challenges Section */
-
-    .challenges {
-      background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)), url('https://i.ibb.co/XfNBbjpH/image.png');
-      /* Replace with your image */
-      background-size: cover;
-      background-position: center;
-      padding: 100px 0;
+    .subscribe-btn:hover {
+      background-color: var(--primary-color);
+      color: var(--bg-color);
     }
 
-    .challenges .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    #loading {
+      display: none;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 8px;
     }
 
-    .challenges-content {
-      width: 50%;
+    .message-text {
+      margin-top: 16px;
+      font-size: 1.125rem;
     }
 
-    .challenges-image {
-      width: 40%;
-      /* Adjust as needed */
+    .message-text.success {
+      color: var(--primary-color);
     }
 
-    .challenges-image img {
-      width: 100%;
-      height: auto;
-      display: block;
+    .message-text.error {
+      color: #F44336;
     }
 
-    /* Leading Section */
-
-    .leading {
-      background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)), url('https://i.ibb.co/XfNBbjpH/image.png');
-      /* Replace with your image */
-      background-size: cover;
-      background-position: center;
-      padding: 100px 0;
-    }
-
-    .leading .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .leading-content {
-      width: 50%;
-    }
-
-    .leading-image {
-      width: 40%;
-      /* Adjust as needed */
-    }
-
-    .leading-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* Real World Section */
-
-    .real-world {
-      background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)), url('https://i.ibb.co/XfNBbjpH/image.png');
-      /* Replace with your image */
-      background-size: cover;
-      background-position: center;
-      padding: 100px 0;
-    }
-
-    .real-world .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .real-world-content {
-      width: 50%;
-    }
-
-    .real-world-image {
-      width: 40%;
-      /* Adjust as needed */
-    }
-
-    .real-world-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* Investment Section */
-
+    /* Feature Sections */
+    .benefit,
+    .challenges,
+    .leading,
+    .real-world,
     .investment {
-      background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)), url('https://i.ibb.co/XfNBbjpH/image.png');
-      /* Replace with your image */
-      background-size: cover;
-      background-position: center;
-      padding: 100px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
+    .benefit .container,
+    .challenges .container,
+    .leading .container,
+    .real-world .container,
     .investment .container {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
+    .benefit-content,
+    .challenges-content,
+    .leading-content,
+    .real-world-content,
     .investment-content {
-      width: 50%;
+      width: 55%;
     }
 
+    .benefit-image,
+    .challenges-image,
+    .leading-image,
+    .real-world-image,
     .investment-image {
       width: 40%;
-      /* Adjust as needed */
     }
 
+    .benefit-image img,
+    .challenges-image img,
+    .leading-image img,
+    .real-world-image img,
     .investment-image img {
       width: 100%;
       height: auto;
-      display: block;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
 
     /* Thank You Section */
-
     .thank-you {
-      background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)), url('https://i.ibb.co/whdMM99X/Green-3-D-Geometric-Cryptocurrency-Presentation.jpg');
-      /* Replace with your image */
-      background-size: cover;
-      background-position: center;
-      padding: 100px 0;
-    }
-
-    .thank-you .container {
       text-align: center;
+      padding: 80px 0;
     }
 
     .thank-you-content {
@@ -295,27 +258,29 @@
       margin: 0 auto;
     }
 
-    .thank-you-content a {
-      color: var(--secondary-color);
-      text-decoration: none;
+    .thank-you-content a.custom-button {
       display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      border: 1px solid var(--secondary-color);
-      border-radius: 5px;
+      padding: 16px 32px;
+      font-size: 1rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background-color: var(--primary-color);
+      color: var(--bg-color);
+      transition: background-color 0.2s ease;
+      text-decoration: none;
     }
 
-    .thank-you-content a:hover {
+    .thank-you-content a.custom-button:hover {
       background-color: var(--secondary-color);
       color: var(--bg-color);
     }
 
-    /* Responsive Design (adjust breakpoints as needed) */
-
+    /* Responsive Design */
     @media (max-width: 768px) {
       .container {
-        width: 95%;
-        padding: 10px;
+        padding: 20px;
       }
 
       .hero .container,
@@ -329,30 +294,32 @@
       }
 
       .hero-content,
-      .hero-image,
       .benefit-content,
-      .benefit-image,
       .challenges-content,
-      .challenges-image,
       .leading-content,
-      .leading-image,
       .real-world-content,
-      .real-world-image,
-      .investment-content,
-      .investment-image {
+      .investment-content {
         width: 100%;
-        margin-bottom: 20px;
+        margin-bottom: 32px;
       }
 
-      .hero-image img,
-      .benefit-image img,
-      .challenges-image img,
-      .leading-image img,
-      .real-world-image img,
-      .investment-image img {
-        max-height: 300px;
-        /* Limit image height on small screens */
-        object-fit: contain;
+      .hero-image,
+      .benefit-image,
+      .challenges-image,
+      .leading-image,
+      .real-world-image,
+      .investment-image {
+        width: 100%;
+      }
+
+      .email-form {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .email-input {
+        width: 100%;
+        margin-bottom: 16px;
       }
     }
   </style>
@@ -365,6 +332,21 @@
     </div>
   </header>
 
+  <section class="email-subscription">
+    <div class="container">
+      <div class="subscription-content">
+        <h2>Stay Updated with Project News</h2>
+        <p>Subscribe to our newsletter for the latest updates on the DAN Token project, exclusive offers, and more!</p>
+        <div class="email-form">
+          <input type="email" id="email" placeholder="Enter your email" class="email-input" required>
+          <button id="subscribeBtn" onclick="subscribe()" class="subscribe-btn">Subscribe</button>
+        </div>
+        <p id="loading">⏳ Subscribing...</p>
+        <p id="message" class="message-text"></p>
+      </div>
+    </div>
+  </section>
+
   <main>
     <section class="hero">
       <div class="container">
@@ -373,10 +355,10 @@
           <h3>IDEA</h3>
           <p>Dinakart (DAN) Crypto Coin is an innovative token designed exclusively for shoppers at nashop.shop. Every time you shop, you earn DAN tokens that unlock a world of benefits:</p>
           <ul>
-            <li>> Reward Redemptions: Use your DAN tokens to claim exciting rewards and special offers directly on our website.</li>
-            <li>> Exclusive Discounts: Enjoy discounts on future purchases, making your shopping experience even more rewarding.</li>
-            <li>> Tradeable Asset: Beyond shopping benefits, DAN tokens are also will be available on various exchanges, giving you the opportunity to trade and potentially grow your investment.</li>
-            <li>> With Dinakart (DAN) Crypto Coin, every purchase brings you closer to exclusive rewards and a dynamic crypto trading experience. Embrace a smarter way to shop and invest-where your loyalty pays off in multiple ways.</li>
+            <li>Reward Redemptions: Use your DAN tokens to claim exciting rewards and special offers directly on our website.</li>
+            <li>Exclusive Discounts: Enjoy discounts on future purchases, making your shopping experience even more rewarding.</li>
+            <li>Tradeable Asset: Beyond shopping benefits, DAN tokens are also will be available on various exchanges, giving you the opportunity to trade and potentially grow your investment.</li>
+            <li>With Dinakart (DAN) Crypto Coin, every purchase brings you closer to exclusive rewards and a dynamic crypto trading experience. Embrace a smarter way to shop and invest-where your loyalty pays off in multiple ways.</li>
           </ul>
         </div>
         <div class="hero-image">
@@ -424,9 +406,9 @@
         <div class="leading-content">
           <h2>Leading</h2>
           <h3>The Market</h3>
-          <p>>Dinakart (DAN) is carving out a leadership position by uniquely blending the world of retail loyalty with the dynamic landscape of cryptocurrencies. By rewarding shoppers with tokens every time they purchase at nashop.shop, DAN offers a tangible incentive that goes beyond traditional rewards programs. This innovative model not only promotes repeat business but also builds a loyal community that is actively engaged with both the shopping experience and the broader crypto market.</p>
-          <p>>Another key factor in DAN's market leadership is its dual utility. Customers can immediately benefit from exclusive discounts and rewards, and at the same time, they have the opportunity to trade DAN tokens on various cryptocurrency exchanges. This dual functionality sets DAN apart from many other tokens that typically serve only one purpose. It positions the coin as both a practical tool for everyday savings and a potential investment asset, catering to a wider audience and ensuring ongoing demand in different market segments.</p>
-          <p>>Finally, strategic innovation and continuous ecosystem development are crucial to maintaining DAN's lead. By constantly evolving the token's features - such as expanding its range of rewards, enhancing security measures, and forging partnerships with additional platforms - Dinakart ensures that DAN remains relevant and competitive. This proactive approach to adapting to market trends and regulatory changes not only reinforces DAN's current market position but also sets the stage for future growth and sustainability in an ever-changing digital finance landscape.</p>
+          <p>Dinakart (DAN) is carving out a leadership position by uniquely blending the world of retail loyalty with the dynamic landscape of cryptocurrencies. By rewarding shoppers with tokens every time they purchase at nashop.shop, DAN offers a tangible incentive that goes beyond traditional rewards programs. This innovative model not only promotes repeat business but also builds a loyal community that is actively engaged with both the shopping experience and the broader crypto market.</p>
+          <p>Another key factor in DAN's market leadership is its dual utility. Customers can immediately benefit from exclusive discounts and rewards, and at the same time, they have the opportunity to trade DAN tokens on various cryptocurrency exchanges. This dual functionality sets DAN apart from many other tokens that typically serve only one purpose. It positions the coin as both a practical tool for everyday savings and a potential investment asset, catering to a wider audience and ensuring ongoing demand in different market segments.</p>
+          <p>Finally, strategic innovation and continuous ecosystem development are crucial to maintaining DAN's lead. By constantly evolving the token's features - such as expanding its range of rewards, enhancing security measures, and forging partnerships with additional platforms - Dinakart ensures that DAN remains relevant and competitive. This proactive approach to adapting to market trends and regulatory changes not only reinforces DAN's current market position but also sets the stage for future growth and sustainability in an ever-changing digital finance landscape.</p>
         </div>
         <div class="leading-image">
           <img src="https://i.ibb.co/R43FF5vW/image.png" alt="Wallet Image">
@@ -474,19 +456,54 @@
           <p>We sincerely appreciate your interest and support for Dinakart (DAN). Your engagement helps drive the vision of creating a unique, rewarding, and innovative ecosystem where shopping meets the world of cryptocurrency.</p>
           <p>As we continue to grow, your trust and participation play a crucial role in shaping the future of DAN — whether through earning rewards, trading, or exploring new opportunities within our expanding ecosystem. We are committed to enhancing the value and utility of DAN, and we look forward to bringing you even more exciting features and benefits.</p>
           <p>
-           <a href="http://nashop.store/" class="custom-button">nashop page</a>
+            <a href="http://nashop.store/" class="custom-button">nashop page</a>
           </p>
         </div>
       </div>
     </section>
-
   </main>
 
   <script>
     // Basic JavaScript interactivity
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
       console.log("Page loaded");
     });
+
+    function subscribe() {
+      var email = document.getElementById("email").value;
+      var messageBox = document.getElementById("message");
+      var subscribeBtn = document.getElementById("subscribeBtn");
+      var loadingText = document.getElementById("loading");
+
+      if (!email) {
+        messageBox.innerText = "Please enter an email!";
+        return;
+      }
+
+      // Show loading effect
+      subscribeBtn.disabled = true;
+      subscribeBtn.innerText = "Subscribing...";
+      loadingText.style.display = "block";
+
+      fetch("https://script.google.com/macros/s/AKfycbw-kyY0OZmXYtmrJc4KSeJirn_dOCXa6TqzXKwZXy4vDIUYn42ps9yD0dKZqM2l9yIg/exec", {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: email })
+        })
+        .then(() => {
+          messageBox.innerText = "✅ Subscribed successfully!";
+        })
+        .catch(error => {
+          console.error("Error:", error);
+          messageBox.innerText = "❌ Failed to subscribe.";
+        })
+        .finally(() => {
+          subscribeBtn.disabled = false;
+          subscribeBtn.innerText = "Subscribe";
+          loadingText.style.display = "none";
+        });
+    }
   </script>
 </body>
 
