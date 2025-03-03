@@ -1,510 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NASHOP</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    /* CSS Reset */
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    :root {
-      --bg-color: #121212;
-      --text-color: #FFFFFF;
-      --primary-color: #39FF14;
-      --secondary-color: #BB86FC;
-      --font-family: 'Inter', sans-serif;
-    }
+        /* Fullscreen setup for body and html */
+        body, html {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Remove scrollbars */
+            background-color: #f4f4f4;
+        }
 
-    body {
-      font-family: var(--font-family);
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
-      font-size: 16px;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px;
-    }
-
-    header {
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    header h1 {
-      font-size: 2.25rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    section {
-      padding: 80px 0;
-      position: relative;
-    }
-
-    h2 {
-      font-size: 2.75rem;
-      font-weight: 700;
-      margin-bottom: 24px;
-      letter-spacing: -0.02em;
-    }
-
-    h3 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-
-    p {
-      margin-bottom: 24px;
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    ul,
-    ol {
-      margin-bottom: 24px;
-      padding-left: 24px;
-    }
-
-    li {
-      margin-bottom: 8px;
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    a {
-      color: var(--secondary-color);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    a:hover {
-      color: var(--primary-color);
-    }
-
-    /* Hero Section */
-    .hero {
-      padding: 120px 0;
-      background: linear-gradient(to right, rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)),
-        url('https://i.ibb.co/d010x6LX/image.png');
-      background-size: cover;
-      background-position: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .hero .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .hero-content {
-      width: 55%;
-    }
-
-    .hero-image {
-      width: 40%;
-    }
-
-    .hero-image img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .email-subscription {
-      background-color: #1E1E1E;
-      padding: 60px 0;
-      text-align: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .email-subscription h2 {
-      font-size: 2rem;
-      margin-bottom: 16px;
-    }
-
-    .email-subscription p {
-      font-size: 1.125rem;
-      margin-bottom: 32px;
-    }
-
-    .email-form {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .email-input {
-      width: 70%;
-      padding: 16px;
-      font-size: 1rem;
-      border-radius: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background-color: #2D2D2D;
-      color: var(--text-color);
-      transition: border-color 0.2s ease;
-    }
-
-    .email-input:focus {
-      border-color: var(--secondary-color);
-      outline: none;
-    }
-
-    .subscribe-btn {
-      padding: 16px 32px;
-      font-size: 1rem;
-      font-weight: 500;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      background-color: var(--secondary-color);
-      color: var(--bg-color);
-      transition: background-color 0.2s ease;
-    }
-
-    .subscribe-btn:hover {
-      background-color: var(--primary-color);
-      color: var(--bg-color);
-    }
-
-    #loading {
-      display: none;
-      color: rgba(255, 255, 255, 0.5);
-      margin-top: 8px;
-    }
-
-    .message-text {
-      margin-top: 16px;
-      font-size: 1.125rem;
-    }
-
-    .message-text.success {
-      color: var(--primary-color);
-    }
-
-    .message-text.error {
-      color: #F44336;
-    }
-
-    /* Feature Sections */
-    .benefit,
-    .challenges,
-    .leading,
-    .real-world,
-    .investment {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .benefit .container,
-    .challenges .container,
-    .leading .container,
-    .real-world .container,
-    .investment .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .benefit-content,
-    .challenges-content,
-    .leading-content,
-    .real-world-content,
-    .investment-content {
-      width: 55%;
-    }
-
-    .benefit-image,
-    .challenges-image,
-    .leading-image,
-    .real-world-image,
-    .investment-image {
-      width: 40%;
-    }
-
-    .benefit-image img,
-    .challenges-image img,
-    .leading-image img,
-    .real-world-image img,
-    .investment-image img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Thank You Section */
-    .thank-you {
-      text-align: center;
-      padding: 80px 0;
-    }
-
-    .thank-you-content {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .thank-you-content a.custom-button {
-      display: inline-block;
-      padding: 16px 32px;
-      font-size: 1rem;
-      font-weight: 500;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      background-color: var(--primary-color);
-      color: var(--bg-color);
-      transition: background-color 0.2s ease;
-      text-decoration: none;
-    }
-
-    .thank-you-content a.custom-button:hover {
-      background-color: var(--secondary-color);
-      color: var(--bg-color);
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .container {
-        padding: 20px;
-      }
-
-      .hero .container,
-      .benefit .container,
-      .challenges .container,
-      .leading .container,
-      .real-world .container,
-      .investment .container {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .hero-content,
-      .benefit-content,
-      .challenges-content,
-      .leading-content,
-      .real-world-content,
-      .investment-content {
-        width: 100%;
-        margin-bottom: 32px;
-      }
-
-      .hero-image,
-      .benefit-image,
-      .challenges-image,
-      .leading-image,
-      .real-world-image,
-      .investment-image {
-        width: 100%;
-      }
-
-      .email-form {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .email-input {
-        width: 100%;
-        margin-bottom: 16px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <div class="container">
-      <h1>NASHOP</h1>
-    </div>
-  </header>
-
-  <section class="email-subscription">
-    <div class="container">
-      <div class="subscription-content">
-        <h2>Stay Updated with Project News</h2>
-        <p>Subscribe to our newsletter for the latest updates on the DAN Token project, exclusive offers, and more!</p>
-        <div class="email-form">
-          <input type="email" id="email" placeholder="Enter your email" class="email-input" required>
-          <button id="subscribeBtn" onclick="subscribe()" class="subscribe-btn">Subscribe</button>
-        </div>
-        <p id="loading">⏳ Subscribing...</p>
-        <p id="message" class="message-text"></p>
-      </div>
-    </div>
-  </section>
-
-  <main>
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <h2>DAN TOKEN</h2>
-          <h3>IDEA</h3>
-          <p>Dinakart (DAN) Crypto Coin is an innovative token designed exclusively for shoppers at nashop.shop. Every time you shop, you earn DAN tokens that unlock a world of benefits:</p>
-          <ul>
-            <li>Reward Redemptions: Use your DAN tokens to claim exciting rewards and special offers directly on our website.</li>
-            <li>Exclusive Discounts: Enjoy discounts on future purchases, making your shopping experience even more rewarding.</li>
-            <li>Tradeable Asset: Beyond shopping benefits, DAN tokens are also will be available on various exchanges, giving you the opportunity to trade and potentially grow your investment.</li>
-            <li>With Dinakart (DAN) Crypto Coin, every purchase brings you closer to exclusive rewards and a dynamic crypto trading experience. Embrace a smarter way to shop and invest-where your loyalty pays off in multiple ways.</li>
-          </ul>
-        </div>
-        <div class="hero-image">
-          <img src="https://i.ibb.co/d010x6LX/image.png" alt="Coin Image">
-        </div>
-      </div>
-    </section>
-
-    <section class="benefit">
-      <div class="container">
-        <div class="benefit-content">
-          <h2>Benefit Of</h2>
-          <h3>DAN TOKEN</h3>
-          <p>Dinakart (DAN) Crypto Coin transforms everyday shopping into a rewarding experience. Every time you make a purchase at nashop.store, you earn DAN tokens that not only build up a loyalty reserve but also open doors to exclusive benefits. This innovative approach turns routine transactions into a valuable asset accumulation, encouraging ongoing customer engagement and ensuring that your spending power grows with every visit.</p>
-          <p>Beyond building loyalty, DAN tokens offer tangible value through immediate discounts and reward redemptions. Shoppers can use their accumulated DAN coins to unlock special offers and enjoy reduced prices on future purchases. This system effectively bridges the gap between digital finance and everyday consumer needs, allowing you to directly benefit from the tokens you earn while shopping.</p>
-          <p>Furthermore, the tradeable nature of DAN Crypto Coin enhances its appeal as both a utility token and a potential investment. To be Available on various cryptocurrency exchanges, DAN provides liquidity and the opportunity for value appreciation over time. This dual functionality empowers users to not only save money through discounts and rewards but also to explore the broader benefits of the dynamic cryptocurrency market.</p>
-        </div>
-        <div class="benefit-image">
-          <img src="https://i.ibb.co/Qj8Ry7nC/image.png" alt="Dollar Sign Image">
-        </div>
-      </div>
-    </section>
-
-    <section class="challenges">
-      <div class="container">
-        <div class="challenges-content">
-          <h2>Challenges and Risks</h2>
-          <p>While Dinakart (DAN) offers many benefits, it also faces several challenges and risks that both users and the platform should consider:</p>
-          <ol>
-            <li>Market Volatility: Like many cryptocurrencies, DAN tokens can experience significant price fluctuations. This volatility might affect the value of your rewards or investments, making it harder to predict the token's future worth.</li>
-            <li>Regulatory Uncertainty: Cryptocurrencies are subject to evolving regulations across different regions. Changes in legal frameworks or tax policies could impact how DAN tokens are used, traded, or even their long-term viability.</li>
-            <li>Technological and Security Risks: As a digital asset, DAN tokens depend on secure blockchain technology. There is always a risk of technical issues, such as software bugs or potential security breaches. Users must be cautious with wallet security and ensure that their digital assets are properly safeguarded.</li>
-            <li>Adoption and Liquidity Concerns: The success of DAN tokens is closely tied to the level of adoption by nashop.shop customers and traders on exchanges. Limited adoption or low liquidity can hinder the token's functionality as both a reward system and an investment, potentially reducing its overall value.</li>
-            <li>Dependence on the Ecosystem: The utility and value of DAN tokens are intrinsically linked to the performance and popularity of the nashop.shop platform. Any issues with the platform - such as technical problems, declining user engagement, or changes in business strategy — could directly impact the token's success.</li>
-          </ol>
-        </div>
-        <div class="challenges-image">
-          <img src="https://i.ibb.co/Qj8Ry7nC/image.png" alt="Puzzle Image">
-        </div>
-      </div>
-    </section>
-
-    <section class="leading">
-      <div class="container">
-        <div class="leading-content">
-          <h2>Leading</h2>
-          <h3>The Market</h3>
-          <p>Dinakart (DAN) is carving out a leadership position by uniquely blending the world of retail loyalty with the dynamic landscape of cryptocurrencies. By rewarding shoppers with tokens every time they purchase at nashop.shop, DAN offers a tangible incentive that goes beyond traditional rewards programs. This innovative model not only promotes repeat business but also builds a loyal community that is actively engaged with both the shopping experience and the broader crypto market.</p>
-          <p>Another key factor in DAN's market leadership is its dual utility. Customers can immediately benefit from exclusive discounts and rewards, and at the same time, they have the opportunity to trade DAN tokens on various cryptocurrency exchanges. This dual functionality sets DAN apart from many other tokens that typically serve only one purpose. It positions the coin as both a practical tool for everyday savings and a potential investment asset, catering to a wider audience and ensuring ongoing demand in different market segments.</p>
-          <p>Finally, strategic innovation and continuous ecosystem development are crucial to maintaining DAN's lead. By constantly evolving the token's features - such as expanding its range of rewards, enhancing security measures, and forging partnerships with additional platforms - Dinakart ensures that DAN remains relevant and competitive. This proactive approach to adapting to market trends and regulatory changes not only reinforces DAN's current market position but also sets the stage for future growth and sustainability in an ever-changing digital finance landscape.</p>
-        </div>
-        <div class="leading-image">
-          <img src="https://i.ibb.co/R43FF5vW/image.png" alt="Wallet Image">
-        </div>
-      </div>
-    </section>
-
-    <section class="real-world">
-      <div class="container">
-        <div class="real-world-content">
-          <h2>Real World Application</h2>
-          <p>DAN tokens are designed to integrate digital currency benefits into everyday shopping, making them a practical tool for real-world use. Here are some key applications:</p>
-          <ol>
-            <li>Loyalty Rewards: Every time you shop at nashop.store, you earn DAN tokens. These tokens act like digital loyalty points that can be accumulated over time. Once you have enough, you can redeem them for discounts, special offers, or even exclusive products, adding a direct, tangible benefit to your regular purchases.</li>
-            <li>Dual-Purpose Asset: Beyond their role in the loyalty program, DAN tokens also function as a tradable digital asset. This means you can hold onto them as a potential investment or trade them on various cryptocurrency exchanges. Their value might appreciate over time, offering an extra financial incentive alongside your shopping rewards.</li>
-            <li>Bridging Retail and Digital Finance: DAN tokens showcase how blockchain technology can enhance everyday transactions by ensuring secure, transparent rewards management. This integration not only modernizes the shopping experience but also makes it possible for traditional retail to tap into the broader, fast-evolving world of digital finance.</li>
-          </ol>
-        </div>
-        <div class="real-world-image">
-          <img src="https://i.ibb.co/d010x6LX/image.png" alt="Windmill Image">
-        </div>
-      </div>
-    </section>
-
-    <section class="investment">
-      <div class="container">
-        <div class="investment-content">
-          <h2>Investment and Trading</h2>
-          <p>Investment and Trading Opportunities with DAN</p>
-          <p>DAN as an Investment Asset Dinakart (DAN) tokens offer a unique opportunity for investors looking to participate in both the retail and crypto markets. Since DAN is earned through shopping at nashop.store, its value is directly tied to the growth of the platform and user engagement. As the ecosystem expands and more users adopt DAN, demand for the token may increase, potentially driving up its value. Early adopters who accumulate and hold DAN tokens may benefit from long-term price appreciation as the token gains wider adoption and utility.</p>
-          <p>Trading DAN on Crypto Exchanges DAN is going to be tradable digital asset and available on various cryptocurrency exchanges. Users can buy, sell, or trade DAN tokens based on market trends and demand. Traders can leverage market fluctuations to make profits, just like with other cryptocurrencies. Whether you're a short-term trader looking to capitalize on price swings or a long-term investor holding for future value growth, DAN provides flexibility in how you engage with the crypto market.</p>
-          <p>Staking and Future Utility In addition to trading, future implementations of DAN could include staking mechanisms, where users lock their tokens to earn passive income. This would encourage long-term holding, reduce supply in circulation, and strengthen the token's ecosystem. Furthermore, potential partnerships with other platforms could increase DAN's real-world usability, making it a more attractive asset for both investors and traders.</p>
-          <p>DAN is more than just a loyalty token — it has real potential in the world of crypto investment and trading. With its dual utility as both a shopping reward and a tradeable digital asset, it provides unique opportunities for users to maximize their earnings, whether through holding, trading, or leveraging future developments in the ecosystem.</p>
-        </div>
-        <div class="investment-image">
-          <img src="https://i.ibb.co/d010x6LX/image.png" alt="Computer with Graph Image">
-        </div>
-      </div>
-    </section>
-
-    <section class="thank-you">
-      <div class="container">
-        <div class="thank-you-content">
-          <h2>Thank You</h2>
-          <p>We sincerely appreciate your interest and support for Dinakart (DAN). Your engagement helps drive the vision of creating a unique, rewarding, and innovative ecosystem where shopping meets the world of cryptocurrency.</p>
-          <p>As we continue to grow, your trust and participation play a crucial role in shaping the future of DAN — whether through earning rewards, trading, or exploring new opportunities within our expanding ecosystem. We are committed to enhancing the value and utility of DAN, and we look forward to bringing you even more exciting features and benefits.</p>
-          <p>
-            <a href="http://nashop.store/" class="custom-button">nashop page</a>
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    // Basic JavaScript interactivity
-    document.addEventListener("DOMContentLoaded", function () {
-      console.log("Page loaded");
-    });
-
-    function subscribe() {
-      var email = document.getElementById("email").value;
-      var messageBox = document.getElementById("message");
-      var subscribeBtn = document.getElementById("subscribeBtn");
-      var loadingText = document.getElementById("loading");
-
-      if (!email) {
-        messageBox.innerText = "Please enter an email!";
-        return;
-      }
-
-      // Show loading effect
-      subscribeBtn.disabled = true;
-      subscribeBtn.innerText = "Subscribing...";
-      loadingText.style.display = "block";
-
-      fetch("https://script.google.com/macros/s/AKfycbw-kyY0OZmXYtmrJc4KSeJirn_dOCXa6TqzXKwZXy4vDIUYn42ps9yD0dKZqM2l9yIg/exec", {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: email })
-        })
-        .then(() => {
-          messageBox.innerText = "✅ Subscribed successfully!";
-        })
-        .catch(error => {
-          console.error("Error:", error);
-          messageBox.innerText = "❌ Failed to subscribe.";
-        })
-        .finally(() => {
-          subscribeBtn.disabled = false;
-          subscribeBtn.innerText = "Subscribe";
-          loadingText.style.display = "none";
+        /* Iframe that covers the full page */
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+    <script>
+        // Disable right-click context menu
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
         });
-    }
-  </script>
-</body>
 
+        // Disable keyboard shortcuts for inspect tools (F12, Ctrl+Shift+I, etc.)
+        document.addEventListener('keydown', function(e) {
+            // F12
+            if (e.keyCode === 123) {
+                e.preventDefault();
+            }
+            // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+S
+            if ((e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || 
+                (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83))) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</head>
+<body>
+    <iframe src="https://nourddinak.pythonanywhere.com/" frameborder="0"></iframe>
+</body>
 </html>
