@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Content Viewer</title> <!-- Added a basic title -->
     <style>
         /* Reset default margin and padding */
         * {
@@ -19,37 +19,117 @@
             margin: 0;
             padding: 0;
             overflow: hidden; /* Remove scrollbars */
-            background-color: #f4f4f4;
+            background-color: #f4f4f4; /* Background for the parent page */
         }
 
         /* Iframe that covers the full page */
         iframe {
             width: 100%;
             height: 100%;
-            border: none;
+            border: none; /* Ensure no border */
+            display: block; /* Prevents potential small gaps */
         }
     </style>
     <script>
-        // Disable right-click context menu
+        // --- Prevent Context Menu (Right-Click) ---
         document.addEventListener('contextmenu', function(e) {
+            console.log("Context menu blocked"); // Optional: for debugging
             e.preventDefault();
-        });
+        }, false); // Use capture phase potentially (optional, false is bubble phase)
 
-        // Disable keyboard shortcuts for inspect tools (F12, Ctrl+Shift+I, etc.)
+        // --- Prevent DevTools Keyboard Shortcuts ---
         document.addEventListener('keydown', function(e) {
             // F12
-            if (e.keyCode === 123) {
+            if (e.key === "F12" || e.keyCode === 123) {
+                console.log("F12 blocked");
                 e.preventDefault();
             }
-            // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+S
-            if ((e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || 
-                (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83))) {
+
+            // Ctrl+Shift+I (Windows/Linux) or Cmd+Opt+I (macOS)
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === "I" || e.keyCode === 73)) {
+                console.log("Ctrl/Cmd+Shift+I blocked");
+                e.preventDefault();
+            }
+
+            // Ctrl+Shift+J (Windows/Linux) or Cmd+Opt+J (macOS)
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === "J" || e.keyCode === 74)) {
+                 console.log("Ctrl/Cmd+Shift+J blocked");
+               e.preventDefault();
+            }
+
+            // Ctrl+U (View Source - Windows/Linux) or Cmd+Opt+U (macOS)
+             if ((e.ctrlKey || e.metaKey) && (e.key === "U" || e.keyCode === 85)) {
+                 console.log("Ctrl/Cmd+U blocked");
+                e.preventDefault();
+            }
+
+            // Ctrl+S (Save Page - Windows/Linux) or Cmd+S (macOS)
+            // Often less critical for inspection, but included in original request
+            if ((e.ctrlKey || e.metaKey) && (e.key === "S" || e.keyCode === 83)) {
+                 console.log("Ctrl/Cmd+S blocked");
+                e.preventDefault();
+            }
+
+             // Ctrl+Shift+C (Inspect Element shortcut) or Cmd+Opt+C (macOS)
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === "C" || e.keyCode === 67)) {
+                 console.log("Ctrl/Cmd+Shift+C blocked");
                 e.preventDefault();
             }
         });
+
+        // --- Attempt to detect DevTools opening (less reliable) ---
+        // This is often easily bypassed and can have false positives.
+        // Use with caution. It checks if the debugger pauses execution.
+        (function() {
+            const threshold = 160; // Time threshold in ms
+            let checkInterval;
+
+            function check() {
+                const startTime = performance.now();
+                // The debugger statement pauses execution ONLY if DevTools is open.
+                // If it's not open, it does nothing.
+                debugger;
+                const endTime = performance.now();
+
+                if (endTime - startTime > threshold) {
+                    console.log("Developer Tools detected open!");
+                    // Action to take: e.g., clear the body, redirect, show message
+                    // Be careful not to lock the user out completely
+                    // document.body.innerHTML = '<h1>Developer Tools Detected. Please close them.</h1>';
+                    // Or try to hide the iframe:
+                    const iframe = document.querySelector('iframe');
+                    if (iframe) {
+                        iframe.style.visibility = 'hidden'; // Hide iframe if devtools detected
+                    }
+                    // You might want to stop checking once detected to avoid repeated actions
+                    // if (checkInterval) clearInterval(checkInterval);
+                } else {
+                    // Optional: Restore visibility if devtools seem closed (can be tricky)
+                     const iframe = document.querySelector('iframe');
+                    if (iframe && iframe.style.visibility === 'hidden') {
+                        iframe.style.visibility = 'visible';
+                    }
+                }
+            }
+
+            // Run the check periodically
+            // checkInterval = setInterval(check, 1000); // Check every second - can be resource intensive!
+
+            // Alternative: Run check on interaction or resize (less reliable for detection)
+            // window.addEventListener('resize', check); // DevTools often cause resize
+
+            // Run check once on load
+            // check(); // Initial check might be too early
+        })();
+
+        // Log that the script has run (for debugging)
+        console.log("Anti-inspect scripts loaded.");
+
     </script>
 </head>
 <body>
-    <iframe src="https://nourddinak.pythonanywhere.com/" frameborder="0"></iframe>
+    <!-- The iframe displays the actual content. Inspecting this page's source
+         will show this HTML structure, not the iframe's content directly. -->
+    <iframe id="contentFrame" src="https://googletst.pythonanywhere.com/" frameborder="0"></iframe>
 </body>
 </html>
