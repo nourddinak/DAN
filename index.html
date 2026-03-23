@@ -1,74 +1,77 @@
-import React from 'react';
-import { Layers } from 'lucide-react';
-
-export default function App() {
-  return (
-    <div className="relative min-h-screen bg-[#050505] flex flex-col items-center justify-center overflow-hidden font-sans text-white">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nourddinak Portfolio - WIP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="relative min-h-screen bg-[#050505] flex flex-col items-center justify-center overflow-hidden font-sans text-white">
+    
+    <!-- --- BACKGROUND GLOWS & "LIQUID GLASS" ORBS --- -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
       
-      {/* --- BACKGROUND GLOWS & "LIQUID GLASS" ORBS --- */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-        
-        {/* Core Dark Blue/Grey Base */}
-        <div className="absolute w-[80vw] h-[60vw] max-w-[800px] max-h-[600px] bg-[#1a1f2e] rounded-full blur-[100px] opacity-40"></div>
-        
-        {/* The Orange Diagonal "Swirls" */}
-        <div className="absolute w-[120vw] h-[20vw] max-w-[1200px] max-h-[200px] bg-gradient-to-r from-transparent via-[#FF5C00] to-transparent rounded-[100%] blur-[60px] opacity-40 transform -rotate-12 translate-y-12"></div>
-        <div className="absolute w-[100vw] h-[15vw] max-w-[1000px] max-h-[150px] bg-gradient-to-r from-transparent via-[#FF8A00] to-transparent rounded-[100%] blur-[80px] opacity-30 transform -rotate-12 -translate-y-24"></div>
-        
-        {/* Subtle White Highlight */}
-        <div className="absolute w-[40vw] h-[40vw] max-w-[400px] max-h-[400px] bg-white rounded-full blur-[120px] opacity-10 transform translate-x-24 -translate-y-12"></div>
-      </div>
-
-      {/* --- TOP PILL BUTTON --- */}
-      <div className="absolute top-[20%] sm:top-32 z-20">
-        <button className="px-4 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center gap-2 text-[13px] font-medium text-white/90 hover:bg-white/10 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.05)]">
-          <Layers className="w-3.5 h-3.5" />
-          Waitlist
-        </button>
-      </div>
-
-      {/* --- CENTER CONTENT --- */}
-      <div className="relative z-10 flex flex-col items-center justify-center w-full mt-8">
-        
-        {/* Massive Outline Text (Like the 404 in the image) */}
-        <div 
-          className="text-[12rem] sm:text-[18rem] md:text-[22rem] font-black leading-none tracking-tighter text-transparent select-none pointer-events-none absolute flex items-center justify-center w-full"
-          style={{ 
-            WebkitTextStroke: '2px rgba(255,255,255,0.15)',
-            fontFamily: 'system-ui, -apple-system, sans-serif'
-          }}
-        >
-          WIP
-        </div>
-
-        {/* Foreground Solid Text (Overlapping the outline) */}
-        <h1 
-          className="text-[2.5rem] sm:text-5xl md:text-[4.5rem] font-bold tracking-tight text-white relative z-20 text-center px-4"
-          style={{ textShadow: '0 10px 30px rgba(0,0,0,0.8)' }}
-        >
-          Under Construction!
-        </h1>
-      </div>
-
-      {/* --- BOTTOM PILL BUTTON --- */}
-      <div className="relative z-20 mt-16 sm:mt-24">
-        <button 
-          className="px-8 py-3.5 rounded-full bg-white text-black font-semibold text-sm tracking-wide hover:scale-105 transition-all duration-300 relative group"
-        >
-          {/* Intense Outer Glow effect from the image */}
-          <div className="absolute inset-0 rounded-full bg-white blur-[15px] opacity-50 group-hover:opacity-70 transition-opacity"></div>
-          {/* Inner Button Content */}
-          <span className="relative z-10">More data compiling</span>
-        </button>
-      </div>
-
-      {/* --- FOOTER --- */}
-      <div className="absolute bottom-8 z-20 flex gap-3 text-[11px] sm:text-xs text-white/40 font-medium tracking-wide">
-        <span>©2026 Nourddinak</span>
-        <span>•</span>
-        <span>Build by Framer Data</span>
-      </div>
-
+      <!-- Core Dark Blue/Grey Base -->
+      <div class="absolute w-[80vw] h-[60vw] max-w-[800px] max-h-[600px] bg-[#1a1f2e] rounded-full blur-[100px] opacity-40"></div>
+      
+      <!-- The Orange Diagonal "Swirls" -->
+      <div class="absolute w-[120vw] h-[20vw] max-w-[1200px] max-h-[200px] bg-gradient-to-r from-transparent via-[#FF5C00] to-transparent rounded-[100%] blur-[60px] opacity-40 transform -rotate-12 translate-y-12"></div>
+      <div class="absolute w-[100vw] h-[15vw] max-w-[1000px] max-h-[150px] bg-gradient-to-r from-transparent via-[#FF8A00] to-transparent rounded-[100%] blur-[80px] opacity-30 transform -rotate-12 -translate-y-24"></div>
+      
+      <!-- Subtle White Highlight -->
+      <div class="absolute w-[40vw] h-[40vw] max-w-[400px] max-h-[400px] bg-white rounded-full blur-[120px] opacity-10 transform translate-x-24 -translate-y-12"></div>
     </div>
-  );
-}
+
+    <!-- --- TOP PILL BUTTON --- -->
+    <div class="absolute top-[20%] sm:top-32 z-20">
+      <button class="px-4 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center gap-2 text-[13px] font-medium text-white/90 hover:bg-white/10 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.05)]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+          <polyline points="2 17 12 22 22 17"></polyline>
+          <polyline points="2 12 12 17 22 12"></polyline>
+        </svg>
+        Waitlist
+      </button>
+    </div>
+
+    <!-- --- CENTER CONTENT --- -->
+    <div class="relative z-10 flex flex-col items-center justify-center w-full mt-8">
+      
+      <!-- Massive Outline Text (Like the 404 in the image) -->
+      <div 
+        class="text-[12rem] sm:text-[18rem] md:text-[22rem] font-black leading-none tracking-tighter text-transparent select-none pointer-events-none absolute flex items-center justify-center w-full"
+        style="-webkit-text-stroke: 2px rgba(255,255,255,0.15); font-family: system-ui, -apple-system, sans-serif;"
+      >
+        WIP
+      </div>
+
+      <!-- Foreground Solid Text (Overlapping the outline) -->
+      <h1 
+        class="text-[2.5rem] sm:text-5xl md:text-[4.5rem] font-bold tracking-tight text-white relative z-20 text-center px-4"
+        style="text-shadow: 0 10px 30px rgba(0,0,0,0.8);"
+      >
+        Under Construction!
+      </h1>
+    </div>
+
+    <!-- --- BOTTOM PILL BUTTON --- -->
+    <div class="relative z-20 mt-16 sm:mt-24">
+      <button 
+        class="px-8 py-3.5 rounded-full bg-white text-black font-semibold text-sm tracking-wide hover:scale-105 transition-all duration-300 relative group"
+      >
+        <!-- Intense Outer Glow effect from the image -->
+        <div class="absolute inset-0 rounded-full bg-white blur-[15px] opacity-50 group-hover:opacity-70 transition-opacity"></div>
+        <!-- Inner Button Content -->
+        <span class="relative z-10">More data compiling</span>
+      </button>
+    </div>
+
+    <!-- --- FOOTER --- -->
+    <div class="absolute bottom-8 z-20 flex gap-3 text-[11px] sm:text-xs text-white/40 font-medium tracking-wide">
+      <span>©2026 Nourddinak</span>
+      <span>•</span>
+      <span>Build by Framer Data</span>
+    </div>
+
+</body>
+</html>
