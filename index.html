@@ -1,135 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DinaKart DAN</title> <!-- Added a basic title -->
-    <style>
-        /* Reset default margin and padding */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+import React from 'react';
+import { Layers } from 'lucide-react';
 
-        /* Fullscreen setup for body and html */
-        body, html {
-            height: 100%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            overflow: hidden; /* Remove scrollbars */
-            background-color: #f4f4f4; /* Background for the parent page */
-        }
+export default function App() {
+  return (
+    <div className="relative min-h-screen bg-[#050505] flex flex-col items-center justify-center overflow-hidden font-sans text-white">
+      
+      {/* --- BACKGROUND GLOWS & "LIQUID GLASS" ORBS --- */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+        
+        {/* Core Dark Blue/Grey Base */}
+        <div className="absolute w-[80vw] h-[60vw] max-w-[800px] max-h-[600px] bg-[#1a1f2e] rounded-full blur-[100px] opacity-40"></div>
+        
+        {/* The Orange Diagonal "Swirls" */}
+        <div className="absolute w-[120vw] h-[20vw] max-w-[1200px] max-h-[200px] bg-gradient-to-r from-transparent via-[#FF5C00] to-transparent rounded-[100%] blur-[60px] opacity-40 transform -rotate-12 translate-y-12"></div>
+        <div className="absolute w-[100vw] h-[15vw] max-w-[1000px] max-h-[150px] bg-gradient-to-r from-transparent via-[#FF8A00] to-transparent rounded-[100%] blur-[80px] opacity-30 transform -rotate-12 -translate-y-24"></div>
+        
+        {/* Subtle White Highlight */}
+        <div className="absolute w-[40vw] h-[40vw] max-w-[400px] max-h-[400px] bg-white rounded-full blur-[120px] opacity-10 transform translate-x-24 -translate-y-12"></div>
+      </div>
 
-        /* Iframe that covers the full page */
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none; /* Ensure no border */
-            display: block; /* Prevents potential small gaps */
-        }
-    </style>
-    <script>
-        // --- Prevent Context Menu (Right-Click) ---
-        document.addEventListener('contextmenu', function(e) {
-            console.log("Context menu blocked"); // Optional: for debugging
-            e.preventDefault();
-        }, false); // Use capture phase potentially (optional, false is bubble phase)
+      {/* --- TOP PILL BUTTON --- */}
+      <div className="absolute top-[20%] sm:top-32 z-20">
+        <button className="px-4 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center gap-2 text-[13px] font-medium text-white/90 hover:bg-white/10 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.05)]">
+          <Layers className="w-3.5 h-3.5" />
+          Waitlist
+        </button>
+      </div>
 
-        // --- Prevent DevTools Keyboard Shortcuts ---
-        document.addEventListener('keydown', function(e) {
-            // F12
-            if (e.key === "F12" || e.keyCode === 123) {
-                console.log("F12 blocked");
-                e.preventDefault();
-            }
+      {/* --- CENTER CONTENT --- */}
+      <div className="relative z-10 flex flex-col items-center justify-center w-full mt-8">
+        
+        {/* Massive Outline Text (Like the 404 in the image) */}
+        <div 
+          className="text-[12rem] sm:text-[18rem] md:text-[22rem] font-black leading-none tracking-tighter text-transparent select-none pointer-events-none absolute flex items-center justify-center w-full"
+          style={{ 
+            WebkitTextStroke: '2px rgba(255,255,255,0.15)',
+            fontFamily: 'system-ui, -apple-system, sans-serif'
+          }}
+        >
+          WIP
+        </div>
 
-            // Ctrl+Shift+I (Windows/Linux) or Cmd+Opt+I (macOS)
-            if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === "I" || e.keyCode === 73)) {
-                console.log("Ctrl/Cmd+Shift+I blocked");
-                e.preventDefault();
-            }
+        {/* Foreground Solid Text (Overlapping the outline) */}
+        <h1 
+          className="text-[2.5rem] sm:text-5xl md:text-[4.5rem] font-bold tracking-tight text-white relative z-20 text-center px-4"
+          style={{ textShadow: '0 10px 30px rgba(0,0,0,0.8)' }}
+        >
+          Under Construction!
+        </h1>
+      </div>
 
-            // Ctrl+Shift+J (Windows/Linux) or Cmd+Opt+J (macOS)
-            if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === "J" || e.keyCode === 74)) {
-                 console.log("Ctrl/Cmd+Shift+J blocked");
-               e.preventDefault();
-            }
+      {/* --- BOTTOM PILL BUTTON --- */}
+      <div className="relative z-20 mt-16 sm:mt-24">
+        <button 
+          className="px-8 py-3.5 rounded-full bg-white text-black font-semibold text-sm tracking-wide hover:scale-105 transition-all duration-300 relative group"
+        >
+          {/* Intense Outer Glow effect from the image */}
+          <div className="absolute inset-0 rounded-full bg-white blur-[15px] opacity-50 group-hover:opacity-70 transition-opacity"></div>
+          {/* Inner Button Content */}
+          <span className="relative z-10">More data compiling</span>
+        </button>
+      </div>
 
-            // Ctrl+U (View Source - Windows/Linux) or Cmd+Opt+U (macOS)
-             if ((e.ctrlKey || e.metaKey) && (e.key === "U" || e.keyCode === 85)) {
-                 console.log("Ctrl/Cmd+U blocked");
-                e.preventDefault();
-            }
+      {/* --- FOOTER --- */}
+      <div className="absolute bottom-8 z-20 flex gap-3 text-[11px] sm:text-xs text-white/40 font-medium tracking-wide">
+        <span>©2026 Nourddinak</span>
+        <span>•</span>
+        <span>Build by Framer Data</span>
+      </div>
 
-            // Ctrl+S (Save Page - Windows/Linux) or Cmd+S (macOS)
-            // Often less critical for inspection, but included in original request
-            if ((e.ctrlKey || e.metaKey) && (e.key === "S" || e.keyCode === 83)) {
-                 console.log("Ctrl/Cmd+S blocked");
-                e.preventDefault();
-            }
-
-             // Ctrl+Shift+C (Inspect Element shortcut) or Cmd+Opt+C (macOS)
-            if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === "C" || e.keyCode === 67)) {
-                 console.log("Ctrl/Cmd+Shift+C blocked");
-                e.preventDefault();
-            }
-        });
-
-        // --- Attempt to detect DevTools opening (less reliable) ---
-        // This is often easily bypassed and can have false positives.
-        // Use with caution. It checks if the debugger pauses execution.
-        (function() {
-            const threshold = 160; // Time threshold in ms
-            let checkInterval;
-
-            function check() {
-                const startTime = performance.now();
-                // The debugger statement pauses execution ONLY if DevTools is open.
-                // If it's not open, it does nothing.
-                debugger;
-                const endTime = performance.now();
-
-                if (endTime - startTime > threshold) {
-                    console.log("Developer Tools detected open!");
-                    // Action to take: e.g., clear the body, redirect, show message
-                    // Be careful not to lock the user out completely
-                    // document.body.innerHTML = '<h1>Developer Tools Detected. Please close them.</h1>';
-                    // Or try to hide the iframe:
-                    const iframe = document.querySelector('iframe');
-                    if (iframe) {
-                        iframe.style.visibility = 'hidden'; // Hide iframe if devtools detected
-                    }
-                    // You might want to stop checking once detected to avoid repeated actions
-                    // if (checkInterval) clearInterval(checkInterval);
-                } else {
-                    // Optional: Restore visibility if devtools seem closed (can be tricky)
-                     const iframe = document.querySelector('iframe');
-                    if (iframe && iframe.style.visibility === 'hidden') {
-                        iframe.style.visibility = 'visible';
-                    }
-                }
-            }
-
-            // Run the check periodically
-            // checkInterval = setInterval(check, 1000); // Check every second - can be resource intensive!
-
-            // Alternative: Run check on interaction or resize (less reliable for detection)
-            // window.addEventListener('resize', check); // DevTools often cause resize
-
-            // Run check once on load
-            // check(); // Initial check might be too early
-        })();
-
-        // Log that the script has run (for debugging)
-        console.log("Anti-inspect scripts loaded.");
-
-    </script>
-</head>
-<body>
-    <!-- The iframe displays the actual content. Inspecting this page's source
-         will show this HTML structure, not the iframe's content directly. -->
-    <iframe id="contentFrame" src="https://googletst.pythonanywhere.com/" frameborder="0"></iframe>
-</body>
-</html>
+    </div>
+  );
+}
